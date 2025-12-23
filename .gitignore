@@ -1,1 +1,12 @@
-data/
+data/*
+
+
+!data/grafana.db
+
+!data/plugins/
+
+data/log/
+data/png/
+data/csv/
+data/alerting/
+data/sessions/
