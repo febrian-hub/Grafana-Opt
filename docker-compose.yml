@@ -1,12 +1,11 @@
 services:
   grafana:
-    image: grafana/grafana:latest
+    build: .
     container_name: grafana
     restart: unless-stopped
     ports:
       - "3000:3000"
-    user: root
-
+    
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
@@ -14,39 +13,11 @@ services:
       - GF_PANELS_DISABLE_SANITIZE_HTML=true
       - GF_SERVER_APP_TITLE=Optimaxx Analysis Platform
       - GF_USERS_DEFAULT_THEME=light
+      - GF_NEWS_NEWS_FEED_ENABLED=false
+      - GF_PUBLIC_DASHBOARDS_ENABLED=true
+      - GF_EXPLORE_ENABLED=false
+      - GF_SNAPSHOTS_ENABLED=false
+      - GF_ANALYTICS_CHECK_FOR_UPDATES=false
 
     volumes:
       - ./data:/var/lib/grafana
-      
-      - ./opt-logo.svg:/usr/share/grafana/public/img/grafana_icon.svg
-      - ./opt-logo.svg:/usr/share/grafana/public/img/grafana_logo.svg
-      - ./fav32.png:/usr/share/grafana/public/img/fav32.png
-      - ./fav32.png:/usr/share/grafana/public/img/apple-touch-icon.png
-      
-      - ./bg-login.svg:/usr/share/grafana/public/img/login_background_dark.svg
-      - ./bg-login.svg:/usr/share/grafana/public/img/login_background_light.svg
-      - ./bg-login.svg:/usr/share/grafana/public/img/g8_login_dark.svg
-      - ./bg-login.svg:/usr/share/grafana/public/img/g8_login_light.svg
-
-    entrypoint:
-      - /bin/sh
-      - -c
-      - |
-        echo "=== MEMULAI OPERASI OPTIMAXX BRANDING ==="
-        
-        echo "Patching Login Title..."
-        find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's/Welcome to Grafana/Optimaxx IIoT Dashboard/g' {} +
-        
-        echo "Patching Browser Tab Title..."
-        find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's|" - Grafana"|" - Optimaxx"|g' {} +
-        
-        echo "Patching HTML Title..."
-        find /usr/share/grafana/public/build -name "*.html" -exec sed -i 's|<title>Grafana</title>|<title>Optimaxx</title>|g' {} +
-        
-        echo "Patching UI Labels..."
-        find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's|text:"Grafana"|text:"Optimaxx"|g' {} +
-        find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's|label:"Grafana"|label:"Optimaxx"|g' {} +
-        find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's|appName:"Grafana"|appName:"Optimaxx"|g' {} +
-        find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's|aria-label="Grafana"|aria-label="Optimaxx"|g' {} +
-
-        /run.sh
