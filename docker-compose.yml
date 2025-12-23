@@ -1,0 +1,31 @@
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    
+    user: root 
+    
+    entrypoint:
+      - /bin/sh
+      - -c
+      - |
+        find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's/Welcome to Grafana/Optimaxx IIoT Dashboard/g' {} +
+        
+        /run.sh
+
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_PANELS_DISABLE_SANITIZE_HTML=true
+      - GF_SERVER_APP_TITLE=Optimaxx Analysis Platform
+    volumes:
+      - ./data:/var/lib/grafana
+      - ./opt-logo.svg:/usr/share/grafana/public/img/grafana_icon.svg
+      - ./opt-logo.svg:/usr/share/grafana/public/img/grafana_logo.svg
+      - ./fav32.png:/usr/share/grafana/public/img/fav32.png
+      - ./bg-login.svg:/usr/share/grafana/public/img/g8_login_dark.svg
+      - ./bg-login.svg:/usr/share/grafana/public/img/g8_login_light.svg
