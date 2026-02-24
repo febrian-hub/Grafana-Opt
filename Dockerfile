@@ -6,9 +6,9 @@ ENV GF_SERVER_APP_TITLE="Optimaxx Analysis Platform" \
     GF_AUTH_ANONYMOUS_ENABLED=false \
     GF_USERS_ALLOW_SIGN_UP=true \
     GF_USERS_AUTO_ASSIGN_ORG_ROLE=Viewer \
-    GF_USERS_DEFAULT_THEME=light \ 
-    GF_AUTH_LOGIN_MAXIMUM_LIFETIME_DURATION=5m \
-    GF_AUTH_LOGIN_MAXIMUM_INACTIVE_LIFETIME_DURATION=5m \
+    GF_USERS_DEFAULT_THEME=light \
+    GF_AUTH_LOGIN_MAXIMUM_LIFETIME_DURATION=10m \
+    GF_AUTH_LOGIN_MAXIMUM_INACTIVE_LIFETIME_DURATION=10m \
     GF_PANELS_DISABLE_SANITIZE_HTML=true \
     GF_ANALYTICS_CHECK_FOR_UPDATES=false \
     GF_SNAPSHOTS_ENABLED=false \
@@ -32,6 +32,6 @@ RUN echo "=== STARTING AGGRESSIVE REBRANDING ===" && \
     find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's|AppTitle="Grafana"|AppTitle="Optimaxx"|g' {} + && \
     find /usr/share/grafana/public/build -name "*.js" -exec sed -i 's|\[{target:"_blank",id:"documentation".*license"}\]|[]|g' {} + || true
 
-RUN sed -i 's|</head>|<style>footer, [class*="footer"], .help-modal, button[aria-label*="Help"] {display: none !important;} #mega-menu-header-toggle ~ span {display: none !important;}</style></head>|g' /usr/share/grafana/public/views/index.html
+RUN sed -i 's|</head>|<style>footer, [class*="footer"], .help-modal, button[aria-label*="Help"], [class*="login-signup-cta"] {display: none !important;} #mega-menu-header-toggle ~ span {display: none !important;}</style></head>|g' /usr/share/grafana/public/views/index.html
 
 USER grafana
