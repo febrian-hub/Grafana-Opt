@@ -1,5 +1,79 @@
 # Changelog
 
+## 1.17.0
+
+##### Chores
+
+* **release:**
+  *  publish github release (#825) (0c0d43ee)
+  *  publish the release to github (6554320b)
+* **deps:**
+  *  update dependency tar to v7.5.8 [security] (#829) (e549788b)
+  *  bump esbuild to 0.25.0 (#827) (ec99bdeb)
+  *  update dependency @bufbuild/protoc-gen-es to v2.11.0 (#810) (55e4a194)
+  *  update dependency terser-webpack-plugin to v5.3.16 (#807) (80596259)
+  *  update dependency @types/lodash to v4.17.23 (#806) (46bf6def)
+  *  update dependency webpack to v5.104.1 [security] (#813) (f3bab720)
+*  Upgrade packages (#814) (9879f7b4)
+
+##### Bug Fixes
+
+* **deps:**  update grafana packages (#808) (807f4d8a)
+*  use selected profile's version in function details panel (#801) (5b2a85ea)
+
+##### Other Changes
+
+* **release:**  publish the release to github" (00c520df)
+
+
+## 1.16.0
+
+##### New Features
+
+*  switch cloud-home-app plugin proxy usage to own (#579) (689f4c82)
+
+
+## 1.15.2
+
+##### Chores
+
+* **deps:**
+  *  Upgrade dependencies (#804) (418c922d)
+  *  Upgrade playwright to 1.58.0 (#805) (4a322241)
+
+
+## 1.15.1
+
+
+## 1.15.0
+
+##### Chores
+
+* **deps:**
+  *  bump js-yaml from 3.14.1 to 3.14.2 (#783) (27db8c2c)
+  *  bump form-data from 4.0.0 to 4.0.5 (#781) (d7a8550e)
+  *  bump brace-expansion from 1.1.11 to 1.1.12 (#782) (3bb1e0fb)
+  *  Update react-router-dom to 6.30.3 (#798) (648f0af6)
+  *  bump @modelcontextprotocol/sdk from 1.24.3 to 1.25.2 (#789) (76fe5444)
+  *  bump undici from 7.16.0 to 7.18.2 (#794) (b24186dc)
+  *  bump body-parser from 2.2.0 to 2.2.2 (#788) (5d90c82f)
+  *  bump qs from 6.14.0 to 6.14.1 (#786) (8a9e6002)
+*  Remove investigations (#787) (188f8623)
+
+##### Continuous Integration
+
+*  update workflows (#792) (98baf273)
+
+##### New Features
+
+*  plot exemplars candidates in timeseries panel at the Flame graph view (#748) (9c87a512)
+
+##### Bug Fixes
+
+* **assistant:**  pass origin to openAssistant (#797) (d3a13ab7)
+*  Handle missing location lines from profiles (#785) (9c7616c2)
+
+
 ## 1.14.2
 
 ##### Chores
