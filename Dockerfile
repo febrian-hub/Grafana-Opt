@@ -2,8 +2,9 @@ FROM grafana/grafana:12.0.2
 
 USER root
 
+# Mengubah GF_AUTH_ANONYMOUS_ENABLED menjadi false agar WAJIB LOGIN
 ENV GF_SERVER_APP_TITLE="Optimaxx Analysis Platform" \
-    GF_AUTH_ANONYMOUS_ENABLED=true \
+    GF_AUTH_ANONYMOUS_ENABLED=false \
     GF_PANELS_DISABLE_SANITIZE_HTML=true \
     GF_ANALYTICS_CHECK_FOR_UPDATES=false \
     GF_SNAPSHOTS_ENABLED=false \
